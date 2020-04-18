@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import { Link } from 'gatsby';
+
 import Menu from './menu';
 
 const bounce = keyframes`
@@ -59,6 +60,8 @@ const StyledHeader = styled.header`
   ${props => css`
     position: sticky;
     top: 16px;
+    z-index: 5;
+    background: ${props.theme.global.colors['light-1']};
  
   
     .bar {
@@ -77,21 +80,21 @@ const StyledHeader = styled.header`
 `;
 
 const Header = ({ siteTitle }) => {
-    return (
-        <>
-            <StyledHeader>
-                <div className="bar">
-                    <StyledLogo>
-                        <Link to="/">
+  return (
+    <>
+      <StyledHeader>
+        <div className="bar">
+          <StyledLogo>
+            <Link to="/">
               AH
                             <span />
-                        </Link>
-                    </StyledLogo>
-                    <Menu />
-                </div>
-            </StyledHeader>
-        </>
-    );
+            </Link>
+          </StyledLogo>
+          <Menu />
+        </div>
+      </StyledHeader>
+    </>
+  );
 };
 
 export default Header;

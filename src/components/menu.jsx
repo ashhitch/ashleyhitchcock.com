@@ -1,6 +1,9 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled, { keyframes, css } from 'styled-components';
+import { Link } from 'gatsby';
+import { LinkBehavior } from './link';
+import { Box } from 'grommet';
+
 
 const menuAni = keyframes`
   0%{transform: rotate(3deg);}
@@ -8,14 +11,15 @@ const menuAni = keyframes`
   100%{transform: rotate(3deg);}
   `;
 
-const StyledMenu = styled.div`
-  ${props => css`
-  .menu {
+const StyledMenu = styled.nav`
     width: 100%;
     background: transparent;
     margin: 0;
     padding: 0;
-    .nav {
+`;
+const StyledNavList = styled.ul`
+  ${props => css`
+  
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
@@ -27,17 +31,17 @@ const StyledMenu = styled.div`
       overflow-x: auto;
       overflow-y: visible;
       white-space: nowrap;
-      @media (min-width: 99px) {
+      @media (min-width: 768px) {
       justify-content: flex-end;
       overflow-x: visible;
       }
-    .nav li {
+     li {
       margin: 0;
       padding: 0;
       list-style: none;
       text-align: center;
       padding: 0 0.75rem;
-      @media (min-width: 99px) {
+      @media (min-width: 768px) {
       padding: 0 1rem;
     }
       &:first-child {
@@ -47,20 +51,20 @@ const StyledMenu = styled.div`
         padding-right: 0;
       }
     }
-    .nav a {
+ li a {
       display: block;
       position: relative;
       z-index: 3;
       width: 100%;
       background-color: transparent;
-      color: ${props.theme.global.colors['light-1']};
+      color: ${props.theme.global.colors['dark-1']};
       text-decoration: none;
       text-transform: uppercase;
       padding: 1rem 0;
       &:after {
         display: block;
         content: "";
-        background: ${props.theme.global.colors['dark-1']};
+        background: ${props.theme.global.colors['light-1']};
         height: 0.6ex;
         position: absolute;
         left: -5%;
@@ -81,25 +85,29 @@ const StyledMenu = styled.div`
         background: ${props.theme.global.colors['accent-1']};
         right: -5%;
       }
-    }
-  }
+    
   `}
 `;
 const Menu = props => {
-    return (
-        <StyledMenu>
-            <nav className="menu" aria-label="Main navigation">
-                <ul className="nav">
-                    <li>
-                        <Link to="/">Home</Link>
-                        <Link to="/">About</Link>
-                        <Link to="/">Open Source</Link>
-                        <Link to="/">Contact</Link>
-                    </li>
-                </ul>
-            </nav>
-        </StyledMenu>
-    );
+  return (
+    <Box>
+      <StyledMenu aria-label="Main navigation">
+        <StyledNavList>
+          <li>
+            <Link activeClassName="is-active" to="/">Home</Link>
+          </li>
+          <li>
+            <Link activeClassName="is-active" to="/about">About</Link>
+          </li>
+          <li>
+            <Link activeClassName="is-active" to="/open-source">Open Source</Link>
+          </li>
+
+
+        </StyledNavList>
+      </StyledMenu>
+    </Box>
+  );
 };
 
 export default Menu;

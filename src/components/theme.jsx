@@ -5,43 +5,64 @@ import styledNormalize from 'styled-normalize';
 
 import { grommet } from 'grommet/themes';
 import { deepMerge } from 'grommet/utils';
-
+const colors = {
+  placeholder: '#000',
+  brand: '#222222',
+  'accent-1': '#bada55',
+  'light-1': '#FFFFFF',
+  'dark-1': '#222222',
+  background: {
+    dark: '#fff',
+    light: '#222',
+  },
+};
 export const base = {
-    name: 'default',
-    rounding: 4,
-    spacing: 24,
+  name: 'default',
+  rounding: 4,
+  spacing: 24,
 
-    global: {
-        colors: {
-            placeholder: '#000',
-            brand: '#222222',
-            'accent-1': '#bada55',
-            'light-1': '#FFFFFF',
-            'dark-1': '#222222',
-            background: {
-                dark: '#fff',
-                light: '#222',
-            },
-        },
-        font: {
-            size: '16px',
-        },
-        control: {
-            border: {
-                radius: '4px',
-            },
-        },
-        input: {
-            weight: 400,
-        },
+  global: {
+    colors,
+    font: {
+
+      family: '"Share Tech Mono", monospace',
+
     },
-    anchor: {},
-    heading: {},
-    button: {
-        extend: props => css`
+    control: {
+      border: {
+        radius: '4px',
+      },
+    },
+    input: {
+      weight: 400,
+    },
+  },
+  anchor: {},
+  heading: {
+    extend: props => css`
+    z-index: 1;
+    position: relative;
+       &:after {
+        display: block;
+        content: "";
+        background: ${colors['accent-1']};
+        height: 0.4ex;
+        position: absolute;
+        left: -2px;
+        bottom: -2px;
+        z-index: -1;
+        transform: rotate(2deg);
+        border-radius: 2px;
+        width: 90px;
+      }
+    `,
+
+  },
+  button: {
+    extend: props => css`
       text-transform: uppercase;
     `,
-    },
+  },
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -100,6 +121,8 @@ export const StyledLink = styled(Link)`
 `;
 export const StyledWrap = styled.div`
   ${props => css`
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
     background-color: ${props.theme.global.colors['light-1']};
     color: ${props.theme.global.colors['dark-1']};

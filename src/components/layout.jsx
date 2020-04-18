@@ -5,6 +5,8 @@ import { Grommet } from 'grommet';
 import theme, { GlobalStyle, StyledWrap } from './theme';
 import Header from './header';
 import Footer from './footer';
+import Main from './main';
+import GitHub from './gitHub';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -25,7 +27,8 @@ const Layout = ({ children }) => {
         <GlobalStyle />
         <StyledWrap>
           <Header siteTitle={data.site.siteMetadata.title} />
-          <main>{children}</main>
+          <GitHub />
+          <Main>{children}</Main>
           <Footer />
         </StyledWrap>
       </Grommet>
