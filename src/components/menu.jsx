@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Link } from 'gatsby';
 import styled, { keyframes, css } from 'styled-components';
 
@@ -28,7 +27,7 @@ const StyledMenu = styled.div`
       overflow-x: auto;
       overflow-y: visible;
       white-space: nowrap;
-      @media (min-width: ${props.theme.breakpoints.large}) {
+      @media (min-width: 99px) {
       justify-content: flex-end;
       overflow-x: visible;
       }
@@ -38,7 +37,7 @@ const StyledMenu = styled.div`
       list-style: none;
       text-align: center;
       padding: 0 0.75rem;
-      @media (min-width: ${props.theme.breakpoints.large}) {
+      @media (min-width: 99px) {
       padding: 0 1rem;
     }
       &:first-child {
@@ -93,6 +92,9 @@ const Menu = props => {
                 <ul className="nav">
                     <li>
                         <Link to="/">Home</Link>
+                        <Link to="/">About</Link>
+                        <Link to="/">Open Source</Link>
+                        <Link to="/">Contact</Link>
                     </li>
                 </ul>
             </nav>

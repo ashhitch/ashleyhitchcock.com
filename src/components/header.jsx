@@ -57,18 +57,19 @@ const StyledLogo = styled.span`
 `;
 const StyledHeader = styled.header`
   ${props => css`
-    position: relative;
-    max-width: 95%;
-    margin: 0 auto;
+    position: sticky;
+    top: 16px;
+ 
+  
     .bar {
       padding: 1rem 0 0 0;
-      @media (min-width: ${props.theme.breakpoints.medium}) {
+      @media (min-width: 768px) {
         display: grid;
         justify-content: space-between;
         align-items: stretch;
         grid-template-columns: auto 1fr;
       }
-      @media (min-width: ${props.theme.breakpoints.large}) {
+      @media (min-width: 992px) {
         padding: 2rem 0;
       }
     }
