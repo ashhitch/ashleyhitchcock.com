@@ -1,48 +1,48 @@
-import styled, { css, createGlobalStyle } from "styled-components"
+import styled, { css, createGlobalStyle } from 'styled-components';
 
-import { Link } from "gatsby"
-import styledNormalize from "styled-normalize"
+import { Link } from 'gatsby';
+import styledNormalize from 'styled-normalize';
 
-import { grommet } from "grommet/themes"
-import { deepMerge } from "grommet/utils"
+import { grommet } from 'grommet/themes';
+import { deepMerge } from 'grommet/utils';
 
 export const base = {
-  name: "default",
-  rounding: 4,
-  spacing: 24,
+    name: 'default',
+    rounding: 4,
+    spacing: 24,
 
-  global: {
-    colors: {
-      placeholder: "#000",
-      brand: "#222222",
-      "accent-1": "#bada55",
-      "light-1": "#FFFFFF",
-      "dark-1": "#222222",
-      background: {
-        dark: "#fff",
-        light: "#222",
-      },
+    global: {
+        colors: {
+            placeholder: '#000',
+            brand: '#222222',
+            'accent-1': '#bada55',
+            'light-1': '#FFFFFF',
+            'dark-1': '#222222',
+            background: {
+                dark: '#fff',
+                light: '#222',
+            },
+        },
+        font: {
+            size: '16px',
+        },
+        control: {
+            border: {
+                radius: '4px',
+            },
+        },
+        input: {
+            weight: 400,
+        },
     },
-    font: {
-      size: "16px",
-    },
-    control: {
-      border: {
-        radius: "4px",
-      },
-    },
-    input: {
-      weight: 400,
-    },
-  },
-  anchor: {},
-  heading: {},
-  button: {
-    extend: props => css`
+    anchor: {},
+    heading: {},
+    button: {
+        extend: props => css`
       text-transform: uppercase;
     `,
-  },
-}
+    },
+};
 
 export const GlobalStyle = createGlobalStyle`
  ${styledNormalize}
@@ -56,14 +56,14 @@ export const GlobalStyle = createGlobalStyle`
      padding: 0;
      margin: 0;
      background-size: 400% 400%;
-     background: ${props.theme.global.colors["dark-1"]};
+     background: ${props.theme.global.colors['dark-1']};
 
      width: 100%;
      transition: background 0.2s ease-in;
      &:before,
      &:after {
        transition: background 0.2s ease-in;
-       background-color: ${props.theme.global.colors["dark-1"]};
+       background-color: ${props.theme.global.colors['dark-1']};
        animation: inherit;
        content: "";
        display: block;
@@ -82,8 +82,8 @@ export const GlobalStyle = createGlobalStyle`
      }
 
      ::selection {
-       background-color: ${props.theme.global.colors["accent-1"]};
-       color: ${props.theme.global.colors["dark-1"]};
+       background-color: ${props.theme.global.colors['accent-1']};
+       color: ${props.theme.global.colors['dark-1']};
      }
    `}
    
@@ -91,21 +91,21 @@ export const GlobalStyle = createGlobalStyle`
 
  }
 
-`
+`;
 export const StyledLink = styled(Link)`
   border-bottom: 1px dotted #222;
   &:hover {
     border-bottom-style: solid;
   }
-`
+`;
 export const StyledWrap = styled.div`
   ${props => css`
     padding: 1rem;
-    background-color: ${props.theme.global.colors["light-1"]};
-    color: ${props.theme.global.colors["dark-1"]};
+    background-color: ${props.theme.global.colors['light-1']};
+    color: ${props.theme.global.colors['dark-1']};
     min-height: 100vh;
     margin: 1rem;
   `}
-`
+`;
 
-export default deepMerge(grommet, { ...base })
+export default deepMerge(grommet, { ...base });

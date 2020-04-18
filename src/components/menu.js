@@ -1,13 +1,13 @@
-import React from "react"
+import React from 'react';
 
-import { Link } from "gatsby"
-import styled, { keyframes, css } from "styled-components"
+import { Link } from 'gatsby';
+import styled, { keyframes, css } from 'styled-components';
 
 const menuAni = keyframes`
   0%{transform: rotate(3deg);}
   50%{transform: rotate(0deg);}
   100%{transform: rotate(3deg);}
-  `
+  `;
 
 const StyledMenu = styled.div`
   ${props => css`
@@ -54,14 +54,14 @@ const StyledMenu = styled.div`
       z-index: 3;
       width: 100%;
       background-color: transparent;
-      color: ${props.theme.global.colors["light-1"]};
+      color: ${props.theme.global.colors['light-1']};
       text-decoration: none;
       text-transform: uppercase;
       padding: 1rem 0;
       &:after {
         display: block;
         content: "";
-        background: ${props.theme.global.colors["dark-1"]};
+        background: ${props.theme.global.colors['dark-1']};
         height: 0.6ex;
         position: absolute;
         left: -5%;
@@ -73,31 +73,31 @@ const StyledMenu = styled.div`
         border-radius: 2px;
       }
       &.is-active:after {
-        background: ${props.theme.global.colors["accent-1"]};
+        background: ${props.theme.global.colors['accent-1']};
         animation: ${menuAni} 1s ease 2;
         right: -5%;
       }
       &:hover:after {
         transform: rotate(4deg);
-        background: ${props.theme.global.colors["accent-1"]};
+        background: ${props.theme.global.colors['accent-1']};
         right: -5%;
       }
     }
   }
   `}
-`
+`;
 const Menu = props => {
-  return (
-    <StyledMenu>
-      <nav className="menu" aria-label="Main navigation">
-        <ul className="nav">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-        </ul>
-      </nav>
-    </StyledMenu>
-  )
-}
+    return (
+        <StyledMenu>
+            <nav className="menu" aria-label="Main navigation">
+                <ul className="nav">
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                </ul>
+            </nav>
+        </StyledMenu>
+    );
+};
 
-export default Menu
+export default Menu;

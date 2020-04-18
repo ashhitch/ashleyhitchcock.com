@@ -1,7 +1,7 @@
-import React from "react"
-import styled, { keyframes, css } from "styled-components"
-import { Link } from "gatsby"
-import Menu from "./menu"
+import React from 'react';
+import styled, { keyframes, css } from 'styled-components';
+import { Link } from 'gatsby';
+import Menu from './menu';
 
 const bounce = keyframes`
   0%, 100% {
@@ -16,7 +16,7 @@ const bounce = keyframes`
   60% {
     transform: translateY(-12px) rotate(0.75turn);
   }
-`
+`;
 
 const StyledLogo = styled.span`
   ${props => css`
@@ -27,8 +27,8 @@ const StyledLogo = styled.span`
     font-weight: 700;
     a {
       padding: 0 0.5ex 0 0;
-      background: ${props.theme.global.colors["light-1"]};
-      color: ${props.theme.global.colors["dark-1"]};
+      background: ${props.theme.global.colors['light-1']};
+      color: ${props.theme.global.colors['dark-1']};
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
@@ -46,7 +46,7 @@ const StyledLogo = styled.span`
         width: 0.5ex;
         height: 0.5ex;
         display: block;
-        background-color: ${props.theme.global.colors["accent-1"]};
+        background-color: ${props.theme.global.colors['accent-1']};
       }
       &:hover span,
       &.is-loading span {
@@ -54,7 +54,7 @@ const StyledLogo = styled.span`
       }
     }
   `}
-`
+`;
 const StyledHeader = styled.header`
   ${props => css`
     position: relative;
@@ -73,24 +73,24 @@ const StyledHeader = styled.header`
       }
     }
   `};
-`
+`;
 
 const Header = ({ siteTitle }) => {
-  return (
-    <>
-      <StyledHeader>
-        <div className="bar">
-          <StyledLogo>
-            <Link to="/">
+    return (
+        <>
+            <StyledHeader>
+                <div className="bar">
+                    <StyledLogo>
+                        <Link to="/">
               AH
-              <span />
-            </Link>
-          </StyledLogo>
-          <Menu />
-        </div>
-      </StyledHeader>
-    </>
-  )
-}
+                            <span />
+                        </Link>
+                    </StyledLogo>
+                    <Menu />
+                </div>
+            </StyledHeader>
+        </>
+    );
+};
 
-export default Header
+export default Header;
