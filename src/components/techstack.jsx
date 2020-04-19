@@ -12,7 +12,7 @@ import WordPressIcon from './../images/icons/wordpress.svg';
 import GatsbyIcon from './../images/icons/gatsby.svg';
 
 const Techstack = () => (
-  <Box>
+  <Box align="center">
     <Heading level="2">Technologies I love</Heading>
     <IconGridStyle>
       <IconGridItemStyle brandbg="#F7DF1E">

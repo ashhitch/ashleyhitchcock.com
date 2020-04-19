@@ -15,7 +15,7 @@ const Footer = () => (
   <StyledFooter>
 
     <SocialBar />
-    <Text>© {dt.getFullYear()} Ash Hitchcock</Text>
+    <Text>© {dt.getFullYear()} Ash Hitchcock | <Link to="/uses">Uses</Link></Text>
 
   </StyledFooter>
 );

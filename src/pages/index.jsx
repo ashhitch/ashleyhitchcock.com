@@ -15,15 +15,29 @@ const MagicOcean = [
     'Slinger of Divs',
     'Slayer of JavaScript',
     'Hater of !important',
-    'survivor of IE6',
+    'Survivor of IE6',
 ];
 let index = 0;
 
 const IndexPage = () => {
 
+    const [theHeight, setTheHeight] = useState(undefined);
     const [magicName, setMagicName] = useState('Hey i\'m Ash Hitchcock 👋');
     const intervalRef = useRef({});
+    const headinglRef = useRef({});
     const h1 = useTypewriter(magicName);
+    useEffect(
+        () => {
+            if (headinglRef && headinglRef.current) {
+                const h = headinglRef.current.offsetHeight;
+                if (h) {
+                    setTheHeight(h);
+
+                }
+            }
+
+        }, [headinglRef]);
+
     useEffect(
         () => {
             intervalRef.current = setInterval(() => {
@@ -49,7 +63,7 @@ const IndexPage = () => {
                     'vertical': 'large',
                 }}
             >
-                <Heading level="1">{h1}</Heading>
+                <Heading level="1"><div ref={headinglRef} style={theHeight ? { height: `${theHeight}px` } : { height: 'auto' }}>{h1}</div></Heading>
                 <HtmlContent>
                     <p>Ash Hitchcock, Front-end Development Director at Fresh Egg. Focused on continuing to grow in the field of web development backed up by over 15 years of creating for the web. Lover of all things JavaScript including React, TypeScript, Node.</p>
                     <p><Link to="/about">Read more</Link></p>

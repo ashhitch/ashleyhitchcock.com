@@ -38,6 +38,44 @@ export const base = {
     },
   },
   anchor: {},
+  text: {
+    extend: props => css`
+     a {
+        color: ${colors['dark-1']};
+        position: relative;
+    display: inline-block;
+    text-decoration: none;
+    z-index: 1;
+    padding: 2px 5px;
+
+    &:after {
+      display: block;
+      content: '';
+      background: ${colors['accent-1']};
+      height: 1ex;
+
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      z-index: -1;
+      transition: all 0.2s ease-in-out;
+      bottom: 0;
+      transform: rotate(3deg);
+      border-radius: 2px;
+      width: 100%;
+    }
+
+    &:hover:after {
+      transform: rotate(2deg);
+      bottom: 0;
+      width: 10%;
+    }
+    &:nth-child(odd):hover:after {
+      transform: rotate(-2deg);
+    }
+    }
+    `
+  },
   heading: {
     extend: props => css`
     z-index: 1;
@@ -72,7 +110,6 @@ export const GlobalStyle = createGlobalStyle`
  }
 
  body {
-  ${props => console.log(props.theme)}
    ${props => css`
      padding: 0;
      margin: 0;

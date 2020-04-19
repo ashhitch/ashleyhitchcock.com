@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
     }
   `);
 
-  console.log(theme);
+
 
   return (
     <>
