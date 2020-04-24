@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import { Link } from 'gatsby';
-
+import useDarkMode from 'use-dark-mode';
 import Menu from './menu';
 
 const bounce = keyframes`
@@ -26,10 +26,10 @@ const StyledLogo = styled.span`
     z-index: 2;
     margin-left: 2px;
     font-weight: 700;
+      color: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
     a {
       padding: 0 0.5ex 0 0;
-      background: ${props.theme.global.colors['light-1']};
-      color: ${props.theme.global.colors['dark-1']};
+      color: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
@@ -61,7 +61,7 @@ const StyledHeader = styled.header`
     position: sticky;
     top: 16px;
     z-index: 5;
-    background: ${props.theme.global.colors['light-1']};
+    background: ${props.dark ? props.theme.global.colors['dark-1'] : props.theme.global.colors['light-1']};
  
   
     .bar {
@@ -80,11 +80,12 @@ const StyledHeader = styled.header`
 `;
 
 const Header = ({ siteTitle }) => {
+  const darkMode = useDarkMode(false);
   return (
     <>
-      <StyledHeader>
+      <StyledHeader dark={darkMode.value}>
         <div className="bar">
-          <StyledLogo>
+          <StyledLogo dark={darkMode.value}>
             <Link to="/">
               AH
                             <span />

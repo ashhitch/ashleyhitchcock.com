@@ -40,8 +40,9 @@ export const base = {
   anchor: {},
   text: {
     extend: props => css`
+  
      a {
-        color: ${colors['dark-1']};
+        color: ${props.theme.darkMode ? colors['light-1'] : colors['dark-1']};
         position: relative;
     display: inline-block;
     text-decoration: none;
@@ -52,7 +53,7 @@ export const base = {
       display: block;
       content: '';
       background: ${colors['accent-1']};
-      height: 1ex;
+      height: 0.8ex;
 
       position: absolute;
       left: 0;
@@ -84,14 +85,14 @@ export const base = {
         display: block;
         content: "";
         background: ${colors['accent-1']};
-        height: 0.4ex;
+        height: 0.6ex;
         position: absolute;
         left: -2px;
         bottom: -2px;
         z-index: -1;
-        transform: rotate(2deg);
+        transform: rotate(4deg);
         border-radius: 2px;
-        width: 90px;
+        width: 80px;
       }
     `,
 
@@ -114,14 +115,14 @@ export const GlobalStyle = createGlobalStyle`
      padding: 0;
      margin: 0;
      background-size: 400% 400%;
-     background: ${props.theme.global.colors['dark-1']};
+     background: ${props.dark ? props.theme.global.colors['dark-2'] : props.theme.global.colors['dark-1']};
 
      width: 100%;
      transition: background 0.2s ease-in;
      &:before,
      &:after {
        transition: background 0.2s ease-in;
-       background-color: ${props.theme.global.colors['dark-1']};
+       background-color: ${props.dark ? props.theme.global.colors['dark-2'] : props.theme.global.colors['dark-1']};
        animation: inherit;
        content: "";
        display: block;
@@ -161,10 +162,11 @@ export const StyledWrap = styled.div`
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    background-color: ${props.theme.global.colors['light-1']};
-    color: ${props.theme.global.colors['dark-1']};
+    background-color: ${props.dark ? props.theme.global.colors['dark-1'] : props.theme.global.colors['light-1']};
+    color: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
     min-height: 100vh;
     margin: 1rem;
+    overflow: hidden;
   `}
 `;
 

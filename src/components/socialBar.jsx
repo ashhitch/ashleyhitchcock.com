@@ -32,7 +32,7 @@ const SocialStyle = styled.nav`
         transition: transform 0.2s ease-in;
         path {
           transition: fill 0.2s ease-in;
-          fill: ${props.theme.global.colors['brand']};
+          fill: ${props.theme.darkMode ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
         }
       }
       a:hover svg {

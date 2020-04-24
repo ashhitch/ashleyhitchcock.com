@@ -33,11 +33,12 @@ const IntroWrap = styled(Box)`
   }
 
   .content {
-    position: relative;
-  margin: 0 auto;
-  @media(min-width: 992px) {
-      max-width: 80%;
-  }
+    color: ${props => props.theme.global.colors['dark-1']};
+position: relative;
+margin: 0 auto;
+@media(min - width: 992px) {
+  max - width: 80 %;
+}
     
   }
 `;

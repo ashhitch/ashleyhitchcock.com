@@ -3,7 +3,7 @@ import styled, { keyframes, css } from 'styled-components';
 import { Link } from 'gatsby';
 import { LinkBehavior } from './link';
 import { Box } from 'grommet';
-
+import useDarkMode from 'use-dark-mode';
 
 const menuAni = keyframes`
   0%{transform: rotate(3deg);}
@@ -34,6 +34,7 @@ const StyledNavList = styled.ul`
       @media (min-width: 768px) {
       justify-content: flex-end;
       overflow-x: visible;
+      padding-right: 20px;
       }
      li {
       margin: 0;
@@ -57,14 +58,14 @@ const StyledNavList = styled.ul`
       z-index: 3;
       width: 100%;
       background-color: transparent;
-      color: ${props.theme.global.colors['dark-1']};
+      color: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
       text-decoration: none;
       text-transform: uppercase;
       padding: 1rem 0;
       &:after {
         display: block;
         content: "";
-        background: ${props.theme.global.colors['light-1']};
+        background: ${props.dark ? props.theme.global.colors['dark-1'] : props.theme.global.colors['light-1']};;
         height: 0.6ex;
         position: absolute;
         left: -5%;
@@ -89,10 +90,11 @@ const StyledNavList = styled.ul`
   `}
 `;
 const Menu = props => {
+  const darkMode = useDarkMode(false);
   return (
     <Box>
       <StyledMenu aria-label="Main navigation">
-        <StyledNavList>
+        <StyledNavList dark={darkMode.value}>
           <li>
             <Link activeClassName="is-active" to="/">Home</Link>
           </li>
@@ -101,6 +103,9 @@ const Menu = props => {
           </li>
           <li>
             <Link activeClassName="is-active" to="/open-source">Open Source</Link>
+          </li>
+          <li>
+            <Link activeClassName="is-active" to="/snips">Snips</Link>
           </li>
 
 

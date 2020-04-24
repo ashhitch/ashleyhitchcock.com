@@ -7,6 +7,7 @@ import Header from './header';
 import Footer from './footer';
 import Main from './main';
 import GitHub from './gitHub';
+import useDarkMode from 'use-dark-mode';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -19,13 +20,14 @@ const Layout = ({ children }) => {
     }
   `);
 
-
+  const { value: dark } = useDarkMode(false);
+  const themeDets = { ...theme, dark, darkMode: dark };
 
   return (
     <>
-      <Grommet theme={theme} full themeMode="light" background="dark-1">
-        <GlobalStyle />
-        <StyledWrap>
+      <Grommet theme={themeDets} full themeMode={dark ? 'dark' : 'light'} background={dark ? 'dark-2' : 'dark-1'}>
+        <GlobalStyle dark={dark} />
+        <StyledWrap dark={dark}>
           <Header siteTitle={data.site.siteMetadata.title} />
           <GitHub />
           <Main>{children}</Main>

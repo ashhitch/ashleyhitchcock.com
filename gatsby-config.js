@@ -1,8 +1,8 @@
 module.exports = {
     siteMetadata: {
-        title: 'Gatsby Default Starter',
-        description: 'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-        author: '@gatsbyjs',
+        title: 'Ashley Hitchcock',
+        description: 'Slinger of <Divs />, Slayer of JavaScript, hater of !important, survivor&nbsp;of IE6; Front-end developer',
+        author: '@ash_hitchcock',
     },
     plugins: [
         'gatsby-plugin-react-helmet',
@@ -46,11 +46,29 @@ module.exports = {
             options: {
                 fonts: [
     
-                    'Share Tech Mono\:300,400,700' 
+                    'Share Tech Mono:300,400,700' 
                 ],
                 display: 'swap'
             }
         },
+        'gatsby-plugin-remove-trailing-slashes',
+        {
+            resolve: 'gatsby-plugin-prettier-build',
+            options: {
+                types: ['html'],
+                concurrency: 20,
+                verbose: true,
+            },
+        },
+        {
+            resolve: 'gatsby-source-instagram',
+            options: {
+                username: 'frontendsnips',
+            },
+        },
+        'gatsby-plugin-netlify',
+        'gatsby-plugin-mdx',
+        'gatsby-plugin-use-dark-mode',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

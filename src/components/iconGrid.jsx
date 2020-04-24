@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const IconGridStyle = styled.div`
   display: flex;
@@ -15,6 +15,8 @@ export const IconGridStyle = styled.div`
 
 `;
 export const IconGridItemStyle = styled.div`
+
+${props => css`
   text-align: center;
   max-width: 140px;
   height: auto;
@@ -36,7 +38,7 @@ export const IconGridItemStyle = styled.div`
 
     path,
     circle {
-      fill: ${props => props.theme.global.colors['dark-1']};
+      fill: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
       transition: fill 0.2s ease-in;
     }
   }
@@ -45,6 +47,9 @@ export const IconGridItemStyle = styled.div`
   }
   &:hover svg path,
   &:hover svg circle {
-    fill: ${props => props.brandbg};
+    fill: ${ props.brandbg};
   }
+  `}
 `;
+
+
