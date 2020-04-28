@@ -5,3 +5,9 @@
  */
 
 // You can delete this file if you're not using it
+const createSnip = require('./gatsby/createSnips');
+
+exports.createPages = async ({ actions, graphql }) => {
+    await createSnip({ actions, graphql });
+
+};
