@@ -26,14 +26,26 @@ const StyledLogo = styled.span`
     z-index: 2;
     margin-left: 2px;
     font-weight: 700;
-      color: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
+    color: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
     a {
       padding: 0 0.5ex 0 0;
       color: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
-      span {
+
+      .middle {
+        display: inline-block;
+        width: 0;
+        max-width: 40px;
+        overflow: hidden;
+        transition: width 0.2s ease-in-out;
+      }
+      &:hover .middle {
+        width: auto;
+        overflow: visible;
+      }
+      .dot {
         position: absolute;
         right: 0;
         bottom: 4px;
@@ -49,8 +61,8 @@ const StyledLogo = styled.span`
         display: block;
         background-color: ${props.theme.global.colors['accent-1']};
       }
-      &:hover span,
-      &.is-loading span {
+      &:hover .dot,
+      &.is-loading .dot {
         animation-name: ${bounce};
       }
     }
@@ -62,8 +74,7 @@ const StyledHeader = styled.header`
     top: 16px;
     z-index: 5;
     background: ${props.dark ? props.theme.global.colors['dark-1'] : props.theme.global.colors['light-1']};
- 
-  
+
     .bar {
       padding: 1rem 0 0 0;
       @media (min-width: 768px) {
@@ -87,8 +98,8 @@ const Header = ({ siteTitle }) => {
         <div className="bar">
           <StyledLogo dark={darkMode.value}>
             <Link to="/">
-              AH
-                            <span />
+              A<span className="middle">S</span>H
+              <span className="dot" />
             </Link>
           </StyledLogo>
           <Menu />

@@ -5,7 +5,7 @@ import { Twemoji as Emoji } from 'react-emoji-render';
 
 const StyledDarkmode = styled.div`
   display: flex;
-  margin: 0 auto  20px auto;
+  margin: 0 auto 20px auto;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   padding: 4px;
@@ -75,27 +75,14 @@ const Toggle = () => {
   const darkMode = useDarkMode(false);
   return (
     <StyledDarkmode>
-      <StyledDarkmodeButton
-        dark={darkMode.value}
-        type="button"
-        onClick={darkMode.disable}
-      >
+      <StyledDarkmodeButton dark={darkMode.value} type="button" onClick={darkMode.disable}>
         <Emoji text="☀️" />
       </StyledDarkmodeButton>
       <StyledToggle>
-        <input
-          type="checkbox"
-          checked={darkMode.value}
-          onChange={darkMode.toggle}
-          id="dmcheck"
-        />
+        <input type="checkbox" checked={darkMode.value} onChange={darkMode.toggle} id="dmcheck" />
         <label htmlFor="dmcheck" />
       </StyledToggle>
-      <StyledDarkmodeButton
-        dark={darkMode.value}
-        type="button"
-        onClick={darkMode.enable}
-      >
+      <StyledDarkmodeButton dark={darkMode.value} type="button" onClick={darkMode.enable}>
         <Emoji text="🌗" />
       </StyledDarkmodeButton>
     </StyledDarkmode>

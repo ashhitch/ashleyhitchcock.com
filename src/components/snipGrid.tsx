@@ -18,7 +18,7 @@ const SnipGrid = ({ edges }) => (
     {edges &&
       edges.map(({ node }) => (
         <Box flex key={node.id} margin={{ bottom: 'small' }} width={{ max: '452px' }} basis="1/2">
-          <a href={`https://www.instagram.com/p/${node.id}/`} target="_blank">
+          <a href={`https://www.instagram.com/p/${node.id}/`} target="_blank" rel="noopener noreferrer">
             <Img fluid={node.localFile.childImageSharp.fluid} alt={genTitle(node.caption)} />
           </a>
           <Box pad="xsmall">

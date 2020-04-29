@@ -7,15 +7,6 @@ const StyledPageWrap = styled(Box)`
   max-width: 930px;
 `;
 
-
-const PageWrap = ({ children }) => {
-
-
-  return (
-    <StyledPageWrap alignSelf="center" >
-      {children}
-    </StyledPageWrap>
-  );
-};
+const PageWrap = ({ children }) => <StyledPageWrap alignSelf="center">{children}</StyledPageWrap>;
 
 export default PageWrap;

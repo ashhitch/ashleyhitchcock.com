@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Grommet } from 'grommet';
+import useDarkMode from 'use-dark-mode';
 import theme, { GlobalStyle, StyledWrap } from './theme';
 import Header from './header';
 import Footer from './footer';
 import Main from './main';
 import GitHub from './gitHub';
-import useDarkMode from 'use-dark-mode';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import SocialBar from './socialBar';
 import { Text } from 'grommet';
+import SocialBar from './socialBar';
 import Toogle from './toggle';
 
 const StyledFooter = styled.footer`
@@ -17,7 +17,9 @@ const Footer = () => (
   <StyledFooter>
     <SocialBar />
     <Toogle />
-    <Text>© {dt.getFullYear()} Ash Hitchcock | <Link to="/uses">Uses</Link></Text>
+    <Text>
+      © {dt.getFullYear()} Ash Hitchcock | <Link to="/uses">Uses</Link>
+    </Text>
   </StyledFooter>
 );
 

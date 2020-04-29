@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import { Link } from 'gatsby';
-import { LinkBehavior } from './link';
 import { Box } from 'grommet';
 import useDarkMode from 'use-dark-mode';
 
@@ -12,10 +11,10 @@ const menuAni = keyframes`
   `;
 
 const StyledMenu = styled.nav`
-    width: 100%;
-    background: transparent;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  background: transparent;
+  margin: 0;
+  padding: 0;
 `;
 const StyledNavList = styled.ul`
   ${props => css`
@@ -96,19 +95,25 @@ const Menu = props => {
       <StyledMenu aria-label="Main navigation">
         <StyledNavList dark={darkMode.value}>
           <li>
-            <Link activeClassName="is-active" to="/">Home</Link>
+            <Link activeClassName="is-active" to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link activeClassName="is-active" to="/about">About</Link>
+            <Link activeClassName="is-active" to="/about">
+              About
+            </Link>
           </li>
           <li>
-            <Link activeClassName="is-active" to="/open-source">Open Source</Link>
+            <Link activeClassName="is-active" to="/open-source">
+              Open Source
+            </Link>
           </li>
           <li>
-            <Link activeClassName="is-active" to="/snips">Snips</Link>
+            <Link activeClassName="is-active" to="/snips">
+              Snips
+            </Link>
           </li>
-
-
         </StyledNavList>
       </StyledMenu>
     </Box>

@@ -1,5 +1,5 @@
+/* eslint-disable array-callback-return */
 const path = require('path');
-const slugify = require('slugify');
 
 module.exports = async ({ actions, graphql }) => {
   const PER_PAGE = 8;

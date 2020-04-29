@@ -1,16 +1,17 @@
 import React from 'react';
-import { Heading } from 'grommet';
-import { Box } from 'grommet';
+import { Heading, Box } from 'grommet';
 
+import useDarkMode from 'use-dark-mode';
 import { IconGridStyle, IconGridItemStyle } from './iconGrid';
 
-import CssIcon from './../images/icons/css.svg';
-import JavascriptIcon from './../images/icons/javascript.svg';
-import NodeIcon from './../images/icons/node.svg';
-import ReactIcon from './../images/icons/r.svg';
-import WordPressIcon from './../images/icons/wordpress.svg';
-import GatsbyIcon from './../images/icons/gatsby.svg';
-import useDarkMode from 'use-dark-mode';
+import CssIcon from '../images/icons/css.svg';
+import JavascriptIcon from '../images/icons/javascript.svg';
+import NodeIcon from '../images/icons/node.svg';
+import ReactIcon from '../images/icons/r.svg';
+import WordPressIcon from '../images/icons/wordpress.svg';
+import GatsbyIcon from '../images/icons/gatsby.svg';
+import GraphqlIcon from '../images/icons/graphql.svg';
+
 const Techstack = () => {
   const darkMode = useDarkMode(false);
   return (
@@ -34,6 +35,9 @@ const Techstack = () => {
         </IconGridItemStyle>
         <IconGridItemStyle dark={darkMode.value} brandbg="#1572B6">
           <CssIcon />
+        </IconGridItemStyle>
+        <IconGridItemStyle dark={darkMode.value} brandbg="#e10098">
+          <GraphqlIcon />
         </IconGridItemStyle>
       </IconGridStyle>
     </Box>

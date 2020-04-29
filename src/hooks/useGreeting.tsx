@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-
 const useGreeting = () => {
-
-  const [greeting, setGreeting] = useState(null);
+  const [greeting, setGreeting] = useState<String | null>(null);
 
   const today = new Date();
   const curHr = today.getHours();

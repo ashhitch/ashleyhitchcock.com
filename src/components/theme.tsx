@@ -5,6 +5,7 @@ import styledNormalize from 'styled-normalize';
 
 import { grommet } from 'grommet/themes';
 import { deepMerge } from 'grommet/utils';
+
 const colors = {
   placeholder: '#000',
   brand: '#222222',
@@ -24,9 +25,7 @@ export const base = {
   global: {
     colors,
     font: {
-
       family: '"Share Tech Mono", monospace',
-
     },
     control: {
       border: {
@@ -40,50 +39,49 @@ export const base = {
   anchor: {},
   text: {
     extend: props => css`
-  
-     a {
+      a {
         color: ${props.theme.darkMode ? colors['light-1'] : colors['dark-1']};
         position: relative;
-    display: inline-block;
-    text-decoration: none;
-    z-index: 1;
-    padding: 2px 5px;
+        display: inline-block;
+        text-decoration: none;
+        z-index: 1;
+        padding: 2px 5px;
 
-    &:after {
-      display: block;
-      content: '';
-      background: ${colors['accent-1']};
-      height: 0.8ex;
+        &:after {
+          display: block;
+          content: '';
+          background: ${colors['accent-1']};
+          height: 0.8ex;
 
-      position: absolute;
-      left: 0;
-      bottom: 10px;
-      z-index: -1;
-      transition: all 0.2s ease-in-out;
-      bottom: 0;
-      transform: rotate(3deg);
-      border-radius: 2px;
-      width: 100%;
-    }
+          position: absolute;
+          left: 0;
+          bottom: 10px;
+          z-index: -1;
+          transition: all 0.2s ease-in-out;
+          bottom: 0;
+          transform: rotate(3deg);
+          border-radius: 2px;
+          width: 100%;
+        }
 
-    &:hover:after {
-      transform: rotate(2deg);
-      bottom: 0;
-      width: 10%;
-    }
-    &:nth-child(odd):hover:after {
-      transform: rotate(-2deg);
-    }
-    }
-    `
+        &:hover:after {
+          transform: rotate(2deg);
+          bottom: 0;
+          width: 10%;
+        }
+        &:nth-child(odd):hover:after {
+          transform: rotate(-2deg);
+        }
+      }
+    `,
   },
   heading: {
     extend: props => css`
-    z-index: 1;
-    position: relative;
-       &:after {
+      z-index: 1;
+      position: relative;
+      &:after {
         display: block;
-        content: "";
+        content: '';
         background: ${colors['accent-1']};
         height: 0.6ex;
         position: absolute;
@@ -95,11 +93,11 @@ export const base = {
         width: 80px;
       }
     `,
-
   },
   button: {
     extend: props => css`
       text-transform: uppercase;
+      color: ${props.theme.darkMode ? colors['light-1'] : colors['dark-1']};
     `,
   },
 };
@@ -124,7 +122,7 @@ export const GlobalStyle = createGlobalStyle`
        transition: background 0.2s ease-in;
        background-color: ${props.dark ? props.theme.global.colors['dark-2'] : props.theme.global.colors['dark-1']};
        animation: inherit;
-       content: "";
+       content: '';
        display: block;
        height: 1rem;
        left: 0;
@@ -162,6 +160,7 @@ export const StyledWrap = styled.div`
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    transition: all 0.2s ease-in-out;
     background-color: ${props.dark ? props.theme.global.colors['dark-1'] : props.theme.global.colors['light-1']};
     color: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
     min-height: 100vh;
