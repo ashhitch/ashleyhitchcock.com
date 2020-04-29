@@ -51,26 +51,9 @@ module.exports = async ({ actions, graphql }) => {
         },
       } = data;
 
-      const nodeIds = edges.map(edge => edge.node.id);
-      const snipTemplate = path.resolve('./src/templates/snips.tsx');
-      const snipPagePath = !variables.skip ? '/snips' : `/snips/${pageNumber + 1}`;
-
-      snipPages[pageNumber] = {
-        path: snipPagePath,
-        component: snipTemplate,
-        context: {
-          ids: nodeIds,
-          pageNumber,
-          hasNextPage,
-          hasPreviousPage,
-          currentPage,
-        },
-        ids: nodeIds,
-      };
+      const mdxIds = [];
       const thePosts = edges.map(async post => {
         const { mdx } = await fetchSnip({ id: post.node.id });
-
-        console.log(mdx);
 
         if (!mdx) {
           return;
@@ -81,6 +64,12 @@ module.exports = async ({ actions, graphql }) => {
         node.mdxId = mdx.id;
         node.slug = mdx.frontmatter.slug;
 
+        mdxIds.push({
+          id: post.node.id,
+          mdxId: mdx.id,
+          slug: mdx.frontmatter.slug,
+        });
+
         const theData = {
           ...post,
           node,
@@ -88,6 +77,24 @@ module.exports = async ({ actions, graphql }) => {
         allPosts.push(theData);
       });
       await Promise.all(thePosts);
+
+      const nodeIds = edges.map(edge => edge.node.id);
+      const snipTemplate = path.resolve('./src/templates/snips.tsx');
+      const snipPagePath = !variables.skip ? '/snips' : `/snips/${pageNumber + 1}`;
+
+      snipPages[pageNumber] = {
+        path: snipPagePath,
+        component: snipTemplate,
+        context: {
+          ids: nodeIds,
+          mdxIds,
+          pageNumber,
+          hasNextPage,
+          hasPreviousPage,
+          currentPage,
+        },
+        ids: nodeIds,
+      };
 
       if (hasNextPage) {
         pageNumber++;

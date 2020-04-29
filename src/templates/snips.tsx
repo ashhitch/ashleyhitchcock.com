@@ -15,8 +15,11 @@ const PrevButton = ({ currentPage }) => {
 
   return <LinkButton to={prevLink} label="Previous" />;
 };
-const SnipsPage = ({ pageContext: { hasNextPage, hasPreviousPage, currentPage, ids }, data: { allInstaNode } }) => {
-  console.log({ ids });
+const SnipsPage = ({
+  pageContext: { hasNextPage, hasPreviousPage, currentPage, ids, mdxIds },
+  data: { allInstaNode },
+}) => {
+  console.log({ mdxIds });
   return (
     <Layout>
       <SEO title="Front-end Snips" />
@@ -27,7 +30,7 @@ const SnipsPage = ({ pageContext: { hasNextPage, hasPreviousPage, currentPage, i
             <a href="https://www.instagram.com/frontendsnips/">Instagram</a> account I setup to share front-end code
             snippets.
           </Paragraph>
-          <SnipGrid edges={allInstaNode.edges} />
+          <SnipGrid edges={allInstaNode.edges} mdx={mdxIds} />
         </HtmlContent>
         <Box direction="row" justify="center" gap="medium" pad="large">
           {hasPreviousPage && <PrevButton currentPage={currentPage} />}
