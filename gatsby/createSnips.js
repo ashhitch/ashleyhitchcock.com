@@ -29,6 +29,7 @@ module.exports = async ({ actions, graphql }) => {
   const allPosts = [];
   const snipPages = [];
   let pageNumber = 0;
+
   const fetchPosts = async variables =>
     graphql(GET_SNIPS, variables).then(({ data }) => {
       const {
@@ -38,9 +39,9 @@ module.exports = async ({ actions, graphql }) => {
         },
       } = data;
 
-      const nodeIds = edges.map(edge => console.log(edge) || edge.node.id);
+      const nodeIds = edges.map(edge => edge.node.id);
       const snipTemplate = path.resolve('./src/templates/snips.tsx');
-      const snipPagePath = !variables.skip ? '/snips' : `/snips/${pageNumber}`;
+      const snipPagePath = !variables.skip ? '/snips' : `/snips/${pageNumber + 1}`;
 
       snipPages[pageNumber] = {
         path: snipPagePath,
@@ -59,7 +60,9 @@ module.exports = async ({ actions, graphql }) => {
       });
       if (hasNextPage) {
         pageNumber++;
-        return fetchPosts({ limit: PER_PAGE, skip: pageNumber * PER_PAGE });
+        const skip = pageNumber * PER_PAGE;
+        console.log({ skip });
+        return fetchPosts({ limit: PER_PAGE, skip });
       }
       return allPosts;
     });
@@ -67,8 +70,10 @@ module.exports = async ({ actions, graphql }) => {
   await fetchPosts({ limit: PER_PAGE, skip: 0 }).then(allPosts => {
     // const postTemplate = path.resolve('./src/templates/snip.tsx');
 
+    console.log(snipPages);
+
     snipPages.map(snipPage => {
-      console.log(`createSnipPage ${snipPage.context.pageNumber}`);
+      console.log(`create SnipPage ${snipPage.context.pageNumber}`);
       createPage(snipPage);
     });
 

@@ -6,10 +6,17 @@ import PageWrap from '../components/pageWrap';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import SnipGrid from '../components/snipGrid';
+import LinkButton from '../components/linkButton';
 
-const SnipsPage = ({ pageContext, data: { allInstaNode } }) => {
-  console.log(allInstaNode);
-  console.log(pageContext);
+const PrevButton = ({ currentPage }) => {
+  const prevPage = +currentPage - 1;
+
+  const prevLink = `/snips${prevPage > 1 ? `/${prevPage}` : ''}`;
+
+  return <LinkButton to={prevLink} label="Previous" />;
+};
+const SnipsPage = ({ pageContext: { hasNextPage, hasPreviousPage, currentPage, ids }, data: { allInstaNode } }) => {
+  console.log({ ids });
   return (
     <Layout>
       <SEO title="Front-end Snips" />
@@ -22,6 +29,10 @@ const SnipsPage = ({ pageContext, data: { allInstaNode } }) => {
           </Paragraph>
           <SnipGrid edges={allInstaNode.edges} />
         </HtmlContent>
+        <Box direction="row" justify="center" gap="medium" pad="large">
+          {hasPreviousPage && <PrevButton currentPage={currentPage} />}
+          {hasNextPage && <LinkButton to={`/snips/${+currentPage + 1}`} label="Next" />}
+        </Box>
       </PageWrap>
     </Layout>
   );
