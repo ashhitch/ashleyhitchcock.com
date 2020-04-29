@@ -25,13 +25,25 @@ module.exports = async ({ actions, graphql }) => {
       }
   }
   `;
+  const GET_SNIP = `
+  query GET_SNIP($id: String){
+    mdx(frontmatter: {id: {eq: $id}}) {
+      id
+      frontmatter {
+        slug
+      }
+    }
+  }
+  `;
   const { createPage } = actions;
   const allPosts = [];
   const snipPages = [];
   let pageNumber = 0;
 
+  const fetchSnip = async variables => graphql(GET_SNIP, variables).then(({ data }) => data);
+
   const fetchPosts = async variables =>
-    graphql(GET_SNIPS, variables).then(({ data }) => {
+    graphql(GET_SNIPS, variables).then(async ({ data }) => {
       const {
         allInstaNode: {
           edges,
@@ -55,35 +67,51 @@ module.exports = async ({ actions, graphql }) => {
         },
         ids: nodeIds,
       };
-      edges.map(post => {
-        allPosts.push(post);
+      const thePosts = edges.map(async post => {
+        const { mdx } = await fetchSnip({ id: post.node.id });
+
+        console.log(mdx);
+
+        if (!mdx) {
+          return;
+        }
+
+        const { node } = post;
+
+        node.mdxId = mdx.id;
+        node.slug = mdx.frontmatter.slug;
+
+        const theData = {
+          ...post,
+          node,
+        };
+        allPosts.push(theData);
       });
+      await Promise.all(thePosts);
+
       if (hasNextPage) {
         pageNumber++;
         const skip = pageNumber * PER_PAGE;
-        console.log({ skip });
         return fetchPosts({ limit: PER_PAGE, skip });
       }
       return allPosts;
     });
 
   await fetchPosts({ limit: PER_PAGE, skip: 0 }).then(allPosts => {
-    // const postTemplate = path.resolve('./src/templates/snip.tsx');
-
-    console.log(snipPages);
+    const postTemplate = path.resolve('./src/templates/snip.tsx');
 
     snipPages.map(snipPage => {
       console.log(`create SnipPage ${snipPage.context.pageNumber}`);
       createPage(snipPage);
     });
 
-    // allPosts.map(post => {
-    //     console.log(`create post: ${post.uri}`);
-    //     createPage({
-    //         path: `/snip/${post.uri}/`,
-    //         component: postTemplate,
-    //         context: post,
-    //     });
-    // });
+    allPosts.map(post => {
+      console.log(`create snip: ${post.node.slug}`);
+      createPage({
+        path: `/snip/${post.node.slug}/`,
+        component: postTemplate,
+        context: post,
+      });
+    });
   });
 };

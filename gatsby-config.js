@@ -18,6 +18,13 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/snips`,
+        name: 'snip',
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
@@ -80,8 +87,29 @@ module.exports = {
         username: 'frontendsnips',
       },
     },
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        root: __dirname,
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-copy-linked-files`,
+          {
+            resolve: 'gatsby-remark-vscode',
+            options: {},
+          },
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1200,
+              linkImagesToOriginal: false,
+              withWebp: true,
+            },
+          },
+        ],
+      },
+    },
     'gatsby-plugin-netlify',
-    'gatsby-plugin-mdx',
+
     'gatsby-plugin-use-dark-mode', // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,

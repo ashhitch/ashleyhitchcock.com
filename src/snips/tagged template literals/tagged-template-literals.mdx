@@ -1,0 +1,24 @@
+---
+title: Tagged template literals
+slug: tagged-template-literals
+category:
+  - ES6
+  - JavaScript
+id: Bmxe0UkBAQ6
+---
+
+Use ‘tagged template literals’ to run a template string through a function.
+
+```js
+function boldMe(strs, ...vals) {
+  let str = strs.map(
+    (string, i) => `${string}${vals[i] ? `<b>${vals[i]}</b>` : ``}`
+  );
+  return str.join('');
+}
+
+const make = 'Porsche';
+const model = '718 Cayman';
+const sentance = boldMe`My next car is a ${make} ${model}`;
+console.log(sentance);
+```
