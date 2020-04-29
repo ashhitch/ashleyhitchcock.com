@@ -7,7 +7,7 @@ export const IconGridStyle = styled.div`
   width: 100%;
   padding: 0;
   list-style-type: none;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   align-self: center;
   max-width: 800px;
@@ -15,9 +15,9 @@ export const IconGridStyle = styled.div`
 export const IconGridItemStyle = styled.div`
   ${props => css`
     text-align: center;
-    max-width: 140px;
+    max-width: 130px;
     height: auto;
-    padding: 10px;
+    padding: 16px;
 
     @media (min-width: 768px) {
       padding: 20px;

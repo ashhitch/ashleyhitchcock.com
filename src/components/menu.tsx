@@ -40,7 +40,7 @@ const StyledNavList = styled.ul`
       padding: 0;
       list-style: none;
       text-align: center;
-      padding: 0 0.75rem;
+      padding: 0 0.5rem;
       @media (min-width: 768px) {
       padding: 0 1rem;
     }

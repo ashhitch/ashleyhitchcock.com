@@ -5,7 +5,7 @@ import { Twemoji as Emoji } from 'react-emoji-render';
 
 const StyledDarkmode = styled.div`
   display: flex;
-  margin: 0 auto 20px auto;
+  margin: 30px auto 30px auto;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   padding: 4px;

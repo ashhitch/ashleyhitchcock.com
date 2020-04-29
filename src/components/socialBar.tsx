@@ -12,7 +12,7 @@ const SocialStyle = styled.nav`
       justify-content: center;
       list-style: none;
       padding: 0px;
-      margin: 0 0 1rem 0;
+      margin: 0;
 
       li + li {
         margin-left: 1.5rem;

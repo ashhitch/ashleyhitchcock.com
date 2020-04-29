@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env`,
+});
+
 module.exports = {
   siteMetadata: {
     title: 'Ashley Hitchcock',
@@ -26,6 +30,18 @@ module.exports = {
         theme_color: '#bada55',
         display: 'minimal-ui',
         icon: 'src/images/icon.png', // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        googleAnalytics: {
+          trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+          cookieName: 'gatsby-gdpr-google-analytics', // default
+          anonymize: true, // default
+        },
+        // defines the environments where the tracking should be available  - default is ["production"]
+        environments: ['production', 'development'],
       },
     },
     {
