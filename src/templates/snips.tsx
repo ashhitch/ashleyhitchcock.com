@@ -22,10 +22,10 @@ const SnipsPage = ({
   console.log({ mdxIds });
   return (
     <Layout>
-      <SEO title="Front-end Snips" />
+      <SEO title="Front-end Snips ✂️" description="Handy front end code snippets" />
       <PageWrap>
         <HtmlContent>
-          <Heading>Helpful Front-end Snips</Heading>
+          <Heading>Helpful Front-end Snips ✂️</Heading>
           <Paragraph fill>
             <a href="https://www.instagram.com/frontendsnips/">Instagram</a> account I setup to share front-end code
             snippets.
