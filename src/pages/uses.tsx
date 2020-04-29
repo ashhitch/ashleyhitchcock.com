@@ -7,7 +7,7 @@ import SEO from '../components/seo';
 
 const UsesPage = () => (
   <Layout>
-    <SEO title="Uses" />
+    <SEO title="Uses" description="The Kit I use to build websites and web apps" />
     <PageWrap>
       <HtmlContent>
         <Heading>Uses</Heading>

@@ -7,7 +7,7 @@ import SEO from '../components/seo';
 
 const AboutPage = () => (
   <Layout>
-    <SEO title="Open Source" />
+    <SEO title="Open Source" description="Open source projects I work on" />
     <PageWrap>
       <HtmlContent>
         <Heading>Open Source</Heading>
