@@ -115,7 +115,7 @@ module.exports = async ({ actions, graphql }) => {
     allPosts.map(post => {
       console.log(`create snip: ${post.node.slug}`);
       createPage({
-        path: `/snip/${post.node.slug}/`,
+        path: `/snip/${post.node.slug}`,
         component: postTemplate,
         context: post,
       });

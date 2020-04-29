@@ -16,13 +16,7 @@ const AboutPage = () => (
           can.
         </p>
         <Heading level="2">WPGraphQl Yoast SEO Plugin</Heading>
-        <p>
-          This is an extension to the{' '}
-          <a href="https://github.com/wp-graphql/wp-graphql" target="_blank" rel="noopener">
-            WPGraphQL plugin
-          </a>{' '}
-          that returns Yoast SEO data.
-        </p>
+        <p>This is an extension to the WPGraphQL plugin that returns Yoast SEO data.</p>
         <p>
           <a href="https://github.com/ashhitch/wp-graphql-yoast-seo">View on GitHub</a>
         </p>
