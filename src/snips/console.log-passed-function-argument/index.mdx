@@ -1,0 +1,32 @@
+---
+date: '2018-10-30'
+title: 'console.log passed function argument'
+id: Bl2xQBlhwCX
+slug: console.log-passed-function-argument
+categories:
+  - JavaScript
+  - ES6
+---
+
+ES6 TIP: console.log passed value, when using implicit arrow function return
+
+```js
+const frameworks = [
+  {
+    name: 'Angular',
+    stars: 39000,
+  },
+  {
+    name: 'React',
+    stars: 107000,
+  },
+  {
+    name: 'Vue',
+    stars: 109000,
+  },
+];
+
+const over100k = frameworks.filter(
+  frm => console.log(frm) || frm.stars > 100000
+);
+```

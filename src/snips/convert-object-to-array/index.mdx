@@ -1,0 +1,16 @@
+---
+date: '2018-10-30'
+title: 'Convert object to array'
+id: BlWFlxRBfwr
+slug: convert-object-to-array
+categories:
+  - JavaScript
+---
+
+JavaScript TIP: Convert object to array
+
+```js
+const obj = { 0: 'Frontend', 1: 'Snips' };
+const arr = Object.keys(obj).map(key => obj[key]);
+console.log(arr);
+```

@@ -30,7 +30,7 @@ const SnipGrid = ({ edges, mdx }) => {
         edges.map(({ node }) => (
           <Box flex key={node.id} margin={{ bottom: 'small' }} width={{ max: '452px' }} basis="1/2">
             {hasMdx(node.id) ? (
-              <Link to={`/snip/${hasMdx(node.id)}/`}>
+              <Link to={`/snip/${hasMdx(node.id)}`}>
                 <Img fluid={node.localFile.childImageSharp.fluid} alt={genTitle(node.caption)} />
               </Link>
             ) : (
@@ -40,7 +40,9 @@ const SnipGrid = ({ edges, mdx }) => {
             )}
 
             <Box pad="xsmall">
-              <Heading level="3">{genTitle(node.caption)}</Heading>
+              <Heading level="3">
+                {node.id} - {genTitle(node.caption)}
+              </Heading>
             </Box>
           </Box>
         ))}

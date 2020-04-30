@@ -1,0 +1,31 @@
+---
+date: '2019-01-31'
+title: 'Total up the instances of items in an array.'
+slug: items-in-an-array
+categories:
+  - JavaScript
+  - ES6
+---
+
+```js
+const data = [
+  'bmw',
+  'bmw',
+  'lamborghini',
+  'audi',
+  'lamborghini',
+  'bmw',
+  'audi',
+];
+
+const counting = data.reduce((obj, itm) => {
+  if (!obj[itm]) {
+    obj[itm] = 0;
+  }
+  obj[itm]++;
+  return obj;
+}, {});
+
+console.log(counting);
+// {bmw: 3, lamborghini: 2, audi: 2}
+```

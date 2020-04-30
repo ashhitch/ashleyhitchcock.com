@@ -1,0 +1,37 @@
+---
+date: '2018-10-30'
+title: 'Implicit return object'
+id: Blr67hNhXfa
+slug: implicit-return-object
+categories:
+  - JavaScript
+  - ES6
+---
+
+### ES5
+
+```js
+const make = 'Ford';
+const model = 'Mustang';
+const engine = '5.0';
+
+const car = {
+  make: make,
+  model: model,
+  engine: engine,
+};
+```
+
+### ES6
+
+```js
+const make = 'Ford';
+const model = 'Mustang';
+const engine = '5.0';
+
+const car = {
+  make,
+  model,
+  engine,
+};
+```

@@ -1,0 +1,18 @@
+---
+date: '2018-10-30'
+title: 'Enforce required parameters'
+id: Bk2dPFjFkvB
+slug: enforce-required-parameters
+categories:
+  - JavaScript
+  - ES6
+---
+
+```js
+const throwIfMissing = () => {
+  throw new Error('You have missing param!');
+};
+const func = (requiredParam = throwIfMissing()) => {
+  // your code here
+};
+```

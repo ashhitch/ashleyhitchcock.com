@@ -1,0 +1,30 @@
+---
+date: '2018-10-30'
+title: 'Template literals'
+id: Bl_JwMThvx_
+slug: template-literals
+categories:
+  - JavaScript
+  - ES6
+---
+
+```js
+const person = {
+  name: 'Ash',
+  job: 'Frontend development director',
+  town: 'Eastbourne',
+  bio:
+    'Bacon ipsum dolor amet capicola ribeye filet mignon alcatra, corned beef pork chop shankle',
+};
+
+const markup = `
+  <div class="card">
+    <h2>
+        ${person.name}
+    </h2>
+    <p class="job">${person.job}</p>
+    <p class="location">${person.town}</p>
+    <p class="bio">${person.bio}</p>
+  </div>
+`;
+```
