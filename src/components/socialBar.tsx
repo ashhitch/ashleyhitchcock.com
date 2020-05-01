@@ -1,9 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Github from '../images/icons/github.svg';
-import Instagram from '../images/icons/instagram.svg';
-import Linkedin from '../images/icons/linkedin.svg';
-import Twitter from '../images/icons/twitter.svg';
+import { Github, Instagram, Linkedin, Twitter } from 'grommet-icons';
 
 const SocialStyle = styled.nav`
   ${props => css`
@@ -29,16 +26,18 @@ const SocialStyle = styled.nav`
 
         a svg {
           transition: transform 0.2s ease-in;
+          fill: ${props.theme.darkMode ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
           path {
             transition: fill 0.2s ease-in;
             fill: ${props.theme.darkMode ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
-          }
+     
         }
         a:hover svg {
           transform: scale(1.1);
         }
         a:hover svg path {
           fill: ${props.theme.global.colors['accent-1']};
+
         }
       }
     }

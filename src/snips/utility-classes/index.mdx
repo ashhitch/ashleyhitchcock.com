@@ -1,11 +1,20 @@
 ---
 date: '2018-10-30'
-title: ''
-id: BmlGBg0h8X
+title: 'Utility Classes'
+id: BmlGBg0h8X-
 slug: utility-classes
 categories:
   - ES6
 ---
 
 ```js
+class SuperTools {
+  static hasClass(elm, classN) {
+    return new RegExp('(\\s|^)' + classN + '(\\s|$)').test(elm.classN);
+  }
+  static getCssProperty(elm, prop) {
+    return window.getComputedStyle(elm, null).getPropertyValue(prop);
+  }
+}
+SuperTools.hasClass(elm, 'class-name');
 ```

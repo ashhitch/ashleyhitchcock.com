@@ -8,7 +8,7 @@ const IntroWrap = styled(Box)`
 
   @media(min-width: 992px) {
     align-self: center;
-    max-width: 95%;
+    max-width: 1400px;
     position: relative;
   }
 

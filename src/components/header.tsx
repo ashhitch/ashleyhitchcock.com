@@ -42,8 +42,10 @@ const StyledLogo = styled.span`
         transition: width 0.2s ease-in-out;
       }
       &:hover .middle {
-        width: auto;
-        overflow: visible;
+        @media (min-width: 769px) {
+          width: auto;
+          overflow: visible;
+        }
       }
       .dot {
         position: absolute;

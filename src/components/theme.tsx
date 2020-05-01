@@ -98,6 +98,12 @@ export const base = {
     extend: props => css`
       text-transform: uppercase;
       color: ${props.theme.darkMode ? colors['light-1'] : colors['dark-1']};
+      svg {
+        fill: ${props.theme.darkMode ? colors['light-1'] : colors['dark-1']};
+      }
+      &:after {
+        content: none;
+      }
     `,
   },
 };

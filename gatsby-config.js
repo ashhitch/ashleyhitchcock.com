@@ -36,7 +36,7 @@ module.exports = {
         background_color: '#bada55',
         theme_color: '#bada55',
         display: 'minimal-ui',
-        icon: 'src/images/icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/icon.svg', // This path is relative to the root of the site.
       },
     },
     {
@@ -85,6 +85,9 @@ module.exports = {
       resolve: 'gatsby-source-instagram',
       options: {
         username: 'frontendsnips',
+        access_token: process.env.INSTAGRAM_TOKEN,
+        instagram_id: process.env.INSTAGRAM_ID,
+        paginate: 10,
       },
     },
     {

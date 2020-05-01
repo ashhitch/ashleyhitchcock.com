@@ -7,7 +7,8 @@ module.exports = async ({ actions, graphql }) => {
   query GET_SNIPS($limit:Int $skip:Int){
       allInstaNode(
         limit: $limit 
-        skip:$skip
+        skip: $skip
+        sort: {order: DESC, fields: timestamp}
       ) {
         pageInfo {
       currentPage
@@ -114,10 +115,11 @@ module.exports = async ({ actions, graphql }) => {
 
     allPosts.map(post => {
       console.log(`create snip: ${post.node.slug}`);
+      const context = { ...post, mdxId: post.node.mdxId };
       createPage({
         path: `/snip/${post.node.slug}`,
         component: postTemplate,
-        context: post,
+        context,
       });
     });
   });

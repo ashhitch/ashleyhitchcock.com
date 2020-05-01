@@ -4,8 +4,26 @@ import { Box, Heading } from 'grommet';
 import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 
-const StyledMain = styled.main`
-  display: flex;
+const StyledWrap = styled(Box)`
+  flex-direction: column;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
+  }
+`;
+const StyledItem = styled(Box)`
+  padding: 10px;
+  @media (min-width: 600px) {
+    flex-basis: 50%;
+    max-width: 460px;
+  }
+`;
+const StyledImg = styled(Img)`
+  border-radius: 6px;
+  overflow: hidden;
 `;
 const genTitle = title => {
   const reg = /(\.|\.\s)\1+/gi;
@@ -24,29 +42,27 @@ const SnipGrid = ({ edges, mdx }) => {
     }
   };
   return (
-    <Box gap="small" wrap direction="row">
+    <StyledWrap gap="small">
       {/* <pre>{JSON.stringify(edges, null, 2)}</pre> */}
       {edges &&
         edges.map(({ node }) => (
-          <Box flex key={node.id} margin={{ bottom: 'small' }} width={{ max: '452px' }} basis="1/2">
+          <StyledItem flex key={node.id} margin={{ bottom: 'small' }}>
             {hasMdx(node.id) ? (
               <Link to={`/snip/${hasMdx(node.id)}`}>
-                <Img fluid={node.localFile.childImageSharp.fluid} alt={genTitle(node.caption)} />
+                <StyledImg fluid={node.localFile.childImageSharp.fluid} alt={genTitle(node.caption)} />
               </Link>
             ) : (
               <a href={`https://www.instagram.com/p/${node.id}/`} target="_blank" rel="noopener noreferrer">
-                <Img fluid={node.localFile.childImageSharp.fluid} alt={genTitle(node.caption)} />
+                <StyledImg fluid={node.localFile.childImageSharp.fluid} alt={genTitle(node.caption)} />
               </a>
             )}
 
             <Box pad="xsmall">
-              <Heading level="3">
-                {node.id} - {genTitle(node.caption)}
-              </Heading>
+              <Heading level="3">{genTitle(node.caption)}</Heading>
             </Box>
-          </Box>
+          </StyledItem>
         ))}
-    </Box>
+    </StyledWrap>
   );
 };
 export default SnipGrid;
