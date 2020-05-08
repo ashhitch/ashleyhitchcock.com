@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import { Heading } from 'grommet';
 import useDarkMode from 'use-dark-mode';
 import Typewriter from 'typewriter-effect';
-import Layout from '../components/layout';
 import SEO from '../components/seo';
 import IntroWrap from '../components/intro';
 import Techstack from '../components/techstack';
@@ -24,7 +23,7 @@ const IndexPage = () => {
   const darkMode = useDarkMode(false);
 
   return (
-    <Layout>
+    <>
       <SEO
         title="Front-end Developer"
         description="Ash Hitchcock, Front-end Developer Sussex UK - Slinger of Divs, Slayer of JavaScript, hater of !important; Front-end Development Director at Fresh Egg."
@@ -63,7 +62,7 @@ const IndexPage = () => {
         </HtmlContent>
       </IntroWrap>
       <Techstack />
-    </Layout>
+    </>
   );
 };
 

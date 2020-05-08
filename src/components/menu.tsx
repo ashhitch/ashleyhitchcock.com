@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import { Link } from 'gatsby';
 import { Box } from 'grommet';
-import useDarkMode from 'use-dark-mode';
 
 const menuAni = keyframes`
   0%{transform: rotate(3deg);}
@@ -57,14 +56,16 @@ const StyledNavList = styled.ul`
       z-index: 3;
       width: 100%;
       background-color: transparent;
-      color: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
+      color: ${props.theme.darkMode ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
       text-decoration: none;
       text-transform: uppercase;
       padding: 1rem 0;
       &:after {
         display: block;
         content: "";
-        background: ${props.dark ? props.theme.global.colors['dark-1'] : props.theme.global.colors['light-1']};;
+        background: ${
+          props.theme.darkMode ? props.theme.global.colors['dark-1'] : props.theme.global.colors['light-1']
+        };
         height: 0.6ex;
         position: absolute;
         left: -5%;
@@ -88,36 +89,33 @@ const StyledNavList = styled.ul`
     
   `}
 `;
-const Menu = props => {
-  const darkMode = useDarkMode(false);
-  return (
-    <Box>
-      <StyledMenu aria-label="Main navigation">
-        <StyledNavList dark={darkMode.value}>
-          <li>
-            <Link activeClassName="is-active" to="/">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link activeClassName="is-active" to="/about">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link activeClassName="is-active" to="/open-source">
-              Open Source
-            </Link>
-          </li>
-          <li>
-            <Link activeClassName="is-active" to="/snips">
-              Snips
-            </Link>
-          </li>
-        </StyledNavList>
-      </StyledMenu>
-    </Box>
-  );
-};
+const Menu = props => (
+  <Box>
+    <StyledMenu aria-label="Main navigation">
+      <StyledNavList>
+        <li>
+          <Link activeClassName="is-active" to="/">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link activeClassName="is-active" to="/about">
+            About
+          </Link>
+        </li>
+        <li>
+          <Link activeClassName="is-active" to="/open-source">
+            Open Source
+          </Link>
+        </li>
+        <li>
+          <Link activeClassName="is-active" to="/snips">
+            Snips
+          </Link>
+        </li>
+      </StyledNavList>
+    </StyledMenu>
+  </Box>
+);
 
 export default Menu;

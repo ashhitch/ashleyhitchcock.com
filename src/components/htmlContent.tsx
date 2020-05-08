@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { Box } from 'grommet';
-import useDarkMode from 'use-dark-mode';
 
 const StyledHtmlContent = styled(Box)`
   ${props => css`
@@ -10,7 +9,7 @@ const StyledHtmlContent = styled(Box)`
           color: ${props.theme.global.colors['dark-1']};
         `
       : css`
-          color: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
+          color: ${props.theme.darkMode ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
         `}
     ul {
       padding-left: 22px;
@@ -61,14 +60,8 @@ interface HTMLProps {
   lightOnly?: boolean;
 }
 
-const HtmlContent: FC<HTMLProps> = ({ lightOnly, children }) => {
-  const darkMode = useDarkMode(false);
-
-  return (
-    <StyledHtmlContent lightOnly={lightOnly} dark={darkMode.value}>
-      {children}
-    </StyledHtmlContent>
-  );
-};
+const HtmlContent: FC<HTMLProps> = ({ lightOnly, children }) => (
+  <StyledHtmlContent lightOnly={lightOnly}>{children}</StyledHtmlContent>
+);
 
 export default HtmlContent;

@@ -34,7 +34,7 @@ export const IconGridItemStyle = styled.div`
 
       path,
       circle {
-        fill: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
+        fill: ${props.theme.darkMode ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
         transition: fill 0.2s ease-in;
       }
     }

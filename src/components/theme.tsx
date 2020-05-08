@@ -119,14 +119,16 @@ export const GlobalStyle = createGlobalStyle`
      padding: 0;
      margin: 0;
      background-size: 400% 400%;
-     background: ${props.dark ? props.theme.global.colors['dark-2'] : props.theme.global.colors['dark-1']};
+     background: ${props.theme.darkMode ? props.theme.global.colors['dark-2'] : props.theme.global.colors['dark-1']};
 
      width: 100%;
      transition: background 0.2s ease-in;
      &:before,
      &:after {
        transition: background 0.2s ease-in;
-       background-color: ${props.dark ? props.theme.global.colors['dark-2'] : props.theme.global.colors['dark-1']};
+       background-color: ${props.theme.darkMode
+         ? props.theme.global.colors['dark-2']
+         : props.theme.global.colors['dark-1']};
        animation: inherit;
        content: '';
        display: block;
@@ -167,8 +169,10 @@ export const StyledWrap = styled.div`
     flex-direction: column;
     padding: 1rem;
     transition: all 0.2s ease-in-out;
-    background-color: ${props.dark ? props.theme.global.colors['dark-1'] : props.theme.global.colors['light-1']};
-    color: ${props.dark ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
+    background-color: ${props.theme.darkMode
+      ? props.theme.global.colors['dark-1']
+      : props.theme.global.colors['light-1']};
+    color: ${props.theme.darkMode ? props.theme.global.colors['light-1'] : props.theme.global.colors['dark-1']};
     min-height: 100vh;
     margin: 1rem;
     overflow: hidden;

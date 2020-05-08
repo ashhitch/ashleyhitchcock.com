@@ -3,7 +3,7 @@ import { Box, Heading, Paragraph } from 'grommet';
 import { graphql } from 'gatsby';
 import HtmlContent from '../components/htmlContent';
 import PageWrap from '../components/pageWrap';
-import Layout from '../components/layout';
+
 import SEO from '../components/seo';
 import SnipGrid from '../components/snipGrid';
 import LinkButton from '../components/linkButton';
@@ -18,28 +18,25 @@ const PrevButton = ({ currentPage }) => {
 const SnipsPage = ({
   pageContext: { hasNextPage, hasPreviousPage, currentPage, ids, mdxIds },
   data: { allInstaNode },
-}) => {
-  console.log({ mdxIds });
-  return (
-    <Layout>
-      <SEO title="Front-end Snips ✂️" description="Handy front end code snippets" />
-      <PageWrap>
-        <HtmlContent>
-          <Heading>Helpful Front-end Snips ✂️</Heading>
-          <Paragraph fill>
-            <a href="https://www.instagram.com/frontendsnips/">Instagram</a> account I setup to share front-end code
-            snippets.
-          </Paragraph>
-          <SnipGrid edges={allInstaNode.edges} mdx={mdxIds} />
-        </HtmlContent>
-        <Box direction="row" justify="center" gap="medium" pad="large">
-          {hasPreviousPage && <PrevButton currentPage={currentPage} />}
-          {hasNextPage && <LinkButton to={`/snips/${+currentPage + 1}`} label="Next" />}
-        </Box>
-      </PageWrap>
-    </Layout>
-  );
-};
+}) => (
+  <>
+    <SEO title="Front-end Snips ✂️" description="Handy front end code snippets" />
+    <PageWrap>
+      <HtmlContent>
+        <Heading>Helpful Front-end Snips ✂️</Heading>
+        <Paragraph fill>
+          <a href="https://www.instagram.com/frontendsnips/">Instagram</a> account I setup to share front-end code
+          snippets.
+        </Paragraph>
+        <SnipGrid edges={allInstaNode.edges} mdx={mdxIds} />
+      </HtmlContent>
+      <Box direction="row" justify="center" gap="medium" pad="large">
+        {hasPreviousPage && <PrevButton currentPage={currentPage} />}
+        {hasNextPage && <LinkButton to={`/snips/${+currentPage + 1}`} label="Next" />}
+      </Box>
+    </PageWrap>
+  </>
+);
 
 export default SnipsPage;
 

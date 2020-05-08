@@ -2,11 +2,10 @@ import React from 'react';
 import { Box, Heading } from 'grommet';
 import HtmlContent from '../components/htmlContent';
 import PageWrap from '../components/pageWrap';
-import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const AboutPage = () => (
-  <Layout>
+  <>
     <SEO title="Open Source" description="Open source projects I work on" />
     <PageWrap>
       <HtmlContent>
@@ -34,7 +33,7 @@ const AboutPage = () => (
         </p>
       </HtmlContent>
     </PageWrap>
-  </Layout>
+  </>
 );
 
 export default AboutPage;

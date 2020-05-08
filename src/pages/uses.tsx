@@ -2,11 +2,10 @@ import React from 'react';
 import { Heading } from 'grommet';
 import HtmlContent from '../components/htmlContent';
 import PageWrap from '../components/pageWrap';
-import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const UsesPage = () => (
-  <Layout>
+  <>
     <SEO title="Uses" description="The Kit I use to build websites and web apps" />
     <PageWrap>
       <HtmlContent>
@@ -53,7 +52,7 @@ const UsesPage = () => (
         </ul>
       </HtmlContent>
     </PageWrap>
-  </Layout>
+  </>
 );
 
 export default UsesPage;

@@ -1,6 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
+import React, { useState, useEffect } from 'react';
 import { Grommet } from 'grommet';
 import useDarkMode from 'use-dark-mode';
 import theme, { GlobalStyle, StyledWrap } from './theme';
@@ -10,25 +8,23 @@ import Main from './main';
 import GitHub from './gitHub';
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+  const [dark, setDark] = useState(false);
+  const darkMode = useDarkMode(false);
 
-  const { value: dark } = useDarkMode(false);
+  useEffect(() => {
+    if (dark !== darkMode.value) {
+      setDark(darkMode.value);
+    }
+  }, [darkMode, dark]);
+  // const dark = false;
   const themeDets = { ...theme, dark, darkMode: dark };
 
   return (
     <>
-      <Grommet theme={themeDets} full themeMode={dark ? 'dark' : 'light'} background={dark ? 'dark-2' : 'dark-1'}>
-        <GlobalStyle dark={dark} />
-        <StyledWrap dark={dark}>
-          <Header siteTitle={data.site.siteMetadata.title} />
+      <Grommet theme={themeDets} full background={dark ? 'dark-2' : 'dark-1'}>
+        <GlobalStyle />
+        <StyledWrap>
+          <Header />
           <GitHub />
           <Main>{children}</Main>
           <Footer />
@@ -36,10 +32,6 @@ const Layout = ({ children }) => {
       </Grommet>
     </>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

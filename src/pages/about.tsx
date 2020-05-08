@@ -3,11 +3,10 @@ import { Heading } from 'grommet';
 import { Link } from 'gatsby';
 import HtmlContent from '../components/htmlContent';
 import PageWrap from '../components/pageWrap';
-import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const AboutPage = () => (
-  <Layout>
+  <>
     <SEO title="About me" description="A little more about me. Front-end JavaScript developer based in Sussex, UK." />
     <PageWrap>
       <HtmlContent>
@@ -98,7 +97,7 @@ const AboutPage = () => (
         </p>
       </HtmlContent>
     </PageWrap>
-  </Layout>
+  </>
 );
 
 export default AboutPage;

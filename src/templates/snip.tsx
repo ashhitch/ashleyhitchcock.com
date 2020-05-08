@@ -5,12 +5,11 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Instagram } from 'grommet-icons';
 import HtmlContent from '../components/htmlContent';
 import PageWrap from '../components/pageWrap';
-import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const SnipsPage = ({ pageContext, data: { mdx } }) => (
   // console.log({ pageContext });
-  <Layout>
+  <>
     <SEO title={mdx.frontmatter.title} />
     <PageWrap>
       <HtmlContent>
@@ -28,7 +27,7 @@ const SnipsPage = ({ pageContext, data: { mdx } }) => (
         />
       </div>
     </PageWrap>
-  </Layout>
+  </>
 );
 
 export default SnipsPage;
