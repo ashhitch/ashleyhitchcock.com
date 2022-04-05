@@ -1,27 +1,32 @@
 {
-    "editor.formatOnSave": true,
-    "[javascript]": {
-        "editor.formatOnSave": false
-    },
-    "[typescript]": {
-        "editor.formatOnSave": false
-    },
-    "[typescriptreact]": {
-        "editor.formatOnSave": false
-    },
-    "[javascriptreact]": {
-        "editor.formatOnSave": false
-    },
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "eslint.enable": true,
-    "prettier.disableLanguages": [
-        "javascript",
-        "typescript",
-        "typescriptreact",
-        "javascriptreact"
-    ],
-    "npm.packageManager": "yarn",
-    "typescript.tsdk": "node_modules/typescript/lib"
+ // Ignore load of files to stage warnings
+ "git.ignoreLimitWarning": true,
+
+ // Default formater for other file types
+ "editor.defaultFormatter": "esbenp.prettier-vscode",
+ // Format on save
+ "editor.formatOnSave": true,
+ // turn it off for JS and JSX, we will do this via eslint
+ "[javascript]": {
+   "editor.formatOnSave": false,
+   "editor.defaultFormatter": null
+ },
+ "[javascriptreact]": {
+   "editor.formatOnSave": false,
+   "editor.defaultFormatter": null
+ },
+ "[typescript]": {
+   "editor.formatOnSave": false,
+   "editor.defaultFormatter": null
+ },
+ "[typescriptreact]": {
+   "editor.formatOnSave": false,
+   "editor.defaultFormatter": null
+ },
+ // tell the ESLint plugin to run on save
+ "editor.codeActionsOnSave": {
+   "source.fixAll": true
+ },
+ // Force status to show
+ "eslint.alwaysShowStatus": true,
 }
