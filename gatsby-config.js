@@ -94,12 +94,11 @@ module.exports = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         root: __dirname,
+        remarkPlugins: [[require('gatsby-remark-vscode').remarkPlugin, {}]],
+
         gatsbyRemarkPlugins: [
           `gatsby-remark-copy-linked-files`,
-          {
-            resolve: 'gatsby-remark-vscode',
-            options: {},
-          },
+
           {
             resolve: 'gatsby-remark-images',
             options: {
