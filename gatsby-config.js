@@ -9,6 +9,7 @@ module.exports = {
       'Slinger of <Divs />, Slayer of JavaScript, hater of !important, survivor&nbsp;of IE6; Front-end developer',
     author: '@ash_hitchcock',
   },
+  trailingSlash: 'never',
   plugins: [
     'gatsby-plugin-react-helmet',
     {
@@ -66,21 +67,26 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-fonts',
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: ['Share Tech Mono:300,400,700'],
-        display: 'swap',
+        fonts: {
+          google: [
+            {
+              family: `Share Tech Mono`,
+              variants: [`300`, `400`, `700`],
+            },
+          ],
+        },
       },
     },
-    'gatsby-plugin-remove-trailing-slashes',
-    {
-      resolve: 'gatsby-plugin-prettier-build',
-      options: {
-        types: ['html'],
-        concurrency: 20,
-        verbose: true,
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-prettier-build',
+    //   options: {
+    //     types: ['html'],
+    //     concurrency: 20,
+    //     verbose: true,
+    //   },
+    // },
     {
       resolve: 'gatsby-source-instagram',
       options: {
