@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Box } from 'grommet';
 
 const StyledHtmlContent = styled(Box)`
-  ${props => css`
+  ${(props) => css`
     ${props.lightOnly
       ? css`
           color: ${props.theme.global.colors['dark-1']};
@@ -28,6 +28,7 @@ const StyledHtmlContent = styled(Box)`
       padding: 2px 5px;
 
       &:after {
+        will-change: transform;
         display: block;
         content: '';
         background: ${props.theme.global.colors['accent-1']};

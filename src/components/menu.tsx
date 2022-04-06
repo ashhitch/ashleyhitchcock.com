@@ -16,7 +16,7 @@ const StyledMenu = styled.nav`
   padding: 0;
 `;
 const StyledNavList = styled.ul`
-  ${props => css`
+  ${(props) => css`
   
       display: flex;
       flex-direction: row;
@@ -61,6 +61,7 @@ const StyledNavList = styled.ul`
       text-transform: uppercase;
       padding: 1rem 0;
       &:after {
+        will-change: transform;
         display: block;
         content: "";
         background: ${
@@ -89,7 +90,7 @@ const StyledNavList = styled.ul`
     
   `}
 `;
-const Menu = props => (
+const Menu = (props) => (
   <Box>
     <StyledMenu aria-label="Main navigation">
       <StyledNavList>

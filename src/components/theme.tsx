@@ -38,7 +38,7 @@ export const base = {
   },
   anchor: {},
   text: {
-    extend: props => css`
+    extend: (props) => css`
       a {
         color: ${props.theme.darkMode ? colors['light-1'] : colors['dark-1']};
         position: relative;
@@ -48,6 +48,7 @@ export const base = {
         padding: 2px 5px;
 
         &:after {
+          will-change: transform;
           display: block;
           content: '';
           background: ${colors['accent-1']};
@@ -76,7 +77,7 @@ export const base = {
     `,
   },
   heading: {
-    extend: props => css`
+    extend: (props) => css`
       z-index: 1;
       position: relative;
       &:after {
@@ -95,7 +96,7 @@ export const base = {
     `,
   },
   button: {
-    extend: props => css`
+    extend: (props) => css`
       text-transform: uppercase;
       color: ${props.theme.darkMode ? colors['light-1'] : colors['dark-1']};
       svg {
@@ -115,7 +116,7 @@ export const GlobalStyle = createGlobalStyle`
  }
 
  body {
-   ${props => css`
+   ${(props) => css`
      padding: 0;
      margin: 0;
      background-size: 400% 400%;
@@ -164,7 +165,7 @@ export const StyledLink = styled(Link)`
   }
 `;
 export const StyledWrap = styled.div`
-  ${props => css`
+  ${(props) => css`
     display: flex;
     flex-direction: column;
     padding: 1rem;
